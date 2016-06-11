@@ -1,13 +1,15 @@
 $(document).ready(init);
 
 function init() {
+   debugger;
    var tasks = getTasks();
    renderTasks(tasks);
    $('.addTask').click(addTask);
-   $('td').on('click', '.delete', deleteTask);
+   $('table').on('click', '.delete', deleteTask);
 }
 
 function deleteTask(e) {
+   debugger;
    var tasks = getTasks();
    var index = $(this).parent().parent().index() - 1;
    tasks.splice(index, 1);
@@ -55,7 +57,6 @@ function newTask(desc, date) {
 }
 
 function renderTasks(tasks) {
-   debugger;
    var $tasks = tasks.map((task, index) => {
       var $task = $('.template').clone();
       if ((index + 1) % 2 === 0) $task.addClass('darkerBG');
