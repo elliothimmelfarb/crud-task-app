@@ -1,7 +1,33 @@
 $(document).ready(init);
 
 function init() {
-   console.log("ready")
+   var tasks = getTasks();
+   renderTasks(tasks);
+   $('.addTask').click(addTask);
+   $('td').on('click', '.delete', deleteTask);
+}
+
+function deleteTask(e) {
+   var tasks = getTasks();
+   var index = $(this).parent().parent().index() - 1;
+   tasks.splice(index, 1);
+   writeTasks(tasks);
+   renderTasks(tasks);
+}
+
+function addTask() {
+   var $desc = $('.addDesc');
+   var desc = $desc.val();
+   $desc.val('');
+   var $date = $('.addDate');
+   var date = $date.val();
+   $date.val('');
+   var tasks = getTasks();
+   var nTask = newTask(desc, date);
+   tasks.push(nTask);
+   writeTasks(tasks);
+   renderTasks(tasks);
+
 }
 
 function writeTasks(tasks) {
@@ -10,8 +36,8 @@ function writeTasks(tasks) {
 }
 
 function getTasks() {
-   var str = localStorage.tasks;
    try {
+      var str = localStorage.tasks;
       var tasks = JSON.parse(str);
    } catch(err) {
       var tasks = [];
@@ -22,23 +48,24 @@ function getTasks() {
 function newTask(desc, date) {
    task = {
       desc: desc,
-      due: date,
+      dueDate: date,
       complete: false
    }
    return task;
 }
 
 function renderTasks(tasks) {
-   var $tasks = tasks.map(task => {
-      var $task = $('.taskRow').clone(true);
-      console.log($task);
+   debugger;
+   var $tasks = tasks.map((task, index) => {
+      var $task = $('.taskRow').clone();
+      if ((index + 1) % 2 === 0) $task.addClass('darkerBG');
       $task.removeClass('hidden');
-      $task.find('.check').removeClass('hidden');
       $task.find('.desc').text(task.desc);
-      $task.find('.dueDate').text(task.due);
-      debugger;
-      return $task
-   }); 
-   $('.taskTable').append($tasks);
+      $task.find('.dueDate').text(task.dueDate);
+      if (task.complete) $task.find('.check').prop('checked', 'true'); //check box if complete
+      return $task;
+   });
+   var $tHead = $('.taskTableHead').clone(); 
+   $('.taskTable').empty().append($tHead).append($tasks);
 }
 
