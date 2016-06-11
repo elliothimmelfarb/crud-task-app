@@ -1,15 +1,18 @@
 $(document).ready(init);
 
 function init() {
-   debugger;
    var tasks = getTasks();
    renderTasks(tasks);
    $('.addTask').click(addTask);
    $('table').on('click', '.delete', deleteTask);
+   $('table').on('click', '.check', completeTask)
+}
+
+function completeTask() {
+   $(this).parent().parent().toggleClass('complete');
 }
 
 function deleteTask(e) {
-   debugger;
    var tasks = getTasks();
    var index = $(this).parent().parent().index() - 1;
    tasks.splice(index, 1);
@@ -59,7 +62,7 @@ function newTask(desc, date) {
 function renderTasks(tasks) {
    var $tasks = tasks.map((task, index) => {
       var $task = $('.template').clone();
-      if ((index + 1) % 2 === 0) $task.addClass('darkerBG');
+      if ((index) % 2 === 0) $task.addClass('darkerBG');
       $task.removeClass('hidden').removeClass('template');
       $task.find('.desc').text(task.desc);
       $task.find('.dueDate').text(task.dueDate);

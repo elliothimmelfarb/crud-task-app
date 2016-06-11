@@ -3,13 +3,17 @@ td {
 }
 
 .darkerBG {
-   background-color: #CECECE;
+   background-color: #EAEAEA;
 }
 
 .taskTable {
    border-bottom: 1px solid #C3C3C3;
 }
 
-.delete {
-   
+.taskRow {
+   border-bottom: solid 1px #B8B8B8;
+}
+
+.complete {
+   background-color: #4AAF46
 }
