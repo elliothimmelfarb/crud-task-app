@@ -9,7 +9,12 @@ function init() {
 }
 
 function completeTask() {
-   $(this).parent().parent().toggleClass('complete');
+   var $thisRow = $(this).parent().parent();
+   var index = $thisRow.index() - 1;
+   $thisRow.toggleClass('complete');
+   var tasks = getTasks();
+   tasks[index].complete = !tasks[index].complete;
+   writeTasks(tasks);
 }
 
 function deleteTask(e) {

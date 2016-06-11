@@ -14,21 +14,25 @@
 <body>
    <div class="container-fluid">
       <!-- <input type="checkbox"class="check"> -->
-      <h1>Task App with CRUD Functionality</h1>
+      <h1>Persistent Task App with CRUD Functionality</h1>
+      <p>(CRUD: Create Read Update Destroy)</p>
+      <p>You can refresh your browser!</p>
       <div class="addArea">
          <h3>Add New Task:</h3>
          <input type="text" class="addDesc" placeholder="Description">
-         <input type="date" class="addDate">
+         <input type="date" class="datepicker addDate">
          <button class="btn btn-success addTask">Add</button>
       </div>
       <div class="tableArea">
          <h3>Task List</h3>
          <table class="table taskTable">
             <tr class="taskTableHead">
-               <th>Description</th>
-               <th>Due Date</th>
-               <th>Completed</th>
-               <th></th>
+               <th class="va d h">Description</th>
+               <th class="va dd h">Due Date</th>
+               <th class="va c h">Completed</th>
+               <th class="c">
+                  <button class="btn btn-warning deleteComplete">Delete Completed</button>
+               </th>
             </tr>
          </table>
       </div>
@@ -36,13 +40,13 @@
    <!-- template -->
    <table class="hidden">
       <tr class="taskRow template">
-         <td class="desc"></td>
-         <td class="dueDate"></td>
-         <td class="completed">
+         <td class="va desc"></td>
+         <td class="va dueDate"></td>
+         <td class="va c completed">
             <input type="checkbox" class="check">
          </td>
-         <td>
-            <button class="delete ">delete</button>
+         <td class="c">
+            <button class="delete btn btn-danger">delete</button>
          </td>
       </tr>
    </table>
