@@ -57,9 +57,9 @@ function newTask(desc, date) {
 function renderTasks(tasks) {
    debugger;
    var $tasks = tasks.map((task, index) => {
-      var $task = $('.taskRow').clone();
+      var $task = $('.template').clone();
       if ((index + 1) % 2 === 0) $task.addClass('darkerBG');
-      $task.removeClass('hidden');
+      $task.removeClass('hidden').removeClass('template');
       $task.find('.desc').text(task.desc);
       $task.find('.dueDate').text(task.dueDate);
       if (task.complete) $task.find('.check').prop('checked', 'true'); //check box if complete
