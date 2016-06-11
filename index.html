@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <title>CRUD Task App</title>
+   <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+   <script src="main.js"></script>
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+   <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+   <div class="container-fluid">
+      <!-- <input type="checkbox"class="check"> -->
+      <h1>Task App with CRUD Functionality</h1>
+      <div class="addArea">
+         <h3>Add New Task:</h3>
+         <input type="text" class="addDesc" placeholder="Description">
+         <input type="date" class="addDate">
+         <button class="btn btn-success addTask">Add</button>
+      </div>
+      <div class="tableArea">
+         <h3>Task List</h3>
+         <table class="table taskTable">
+            <tr class="taskTableHead">
+               <th>Description</th>
+               <th>Due Date</th>
+               <th>Completed</th>
+            </tr>
+               <tr class="taskRow hidden">
+                  <td class="desc"></td>
+                  <td class="dueDate"></td>
+                  <td class="completed">
+                     <input type="checkbox" class="check hidden">
+                  </td>
+               </tr>
+         </table>
+      </div>
+   </div>
+   <!-- template -->
+</body>
+
+</html>
