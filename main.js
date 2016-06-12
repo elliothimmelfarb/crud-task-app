@@ -1,3 +1,5 @@
+"use strict";
+
 $(document).ready(init);
 
 function init() {
@@ -66,7 +68,7 @@ function getTasks() {
 }
 
 function newTask(desc, date) {
-   task = {
+   var task = {
       desc: desc,
       dueDate: date,
       complete: false
